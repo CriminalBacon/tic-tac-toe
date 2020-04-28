@@ -1,8 +1,21 @@
 class GameBoard
-    @@board = {}
+    attr_reader :board
 
     def initialize
+        @board = {}
         self.create_board
+    end
+
+    def print_board
+        self.board.each do |pos, cell|
+            print "#{cell.print_cell}"
+            if pos % 3 == 0
+                print "\n"
+                
+            end
+            
+        end
+
     end
 
     protected
@@ -10,7 +23,7 @@ class GameBoard
         count = 1
         (0..2).each do |x|
             (0..2).each do |y|
-                @@board[count] = Cell.new(x, y)
+                @board[count] = Cell.new(x, y)
                 count += 1
 
             end
@@ -32,11 +45,12 @@ class Cell
         @owned = owned
     end
 
-    def print
-        puts " #{owned} "
+    def print_cell
+        print " #{owned} "
     end
 end
 
 
 
-board = GameBoard.new
+ttt = GameBoard.new
+ttt.print_board
