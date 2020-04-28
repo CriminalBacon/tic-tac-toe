@@ -1,6 +1,20 @@
 class GameBoard
+    @@board = {}
 
     def initialize
+        self.create_board
+    end
+
+    protected
+    def create_board
+        count = 1
+        (0..2).each do |x|
+            (0..2).each do |y|
+                @@board[count] = Cell.new(x, y)
+                count += 1
+
+            end
+        end
 
     end
 end
@@ -25,7 +39,4 @@ end
 
 
 
-test_cell = Cell.new(1, 2)
-#test_cell.owned = "X"
-puts "#{test_cell.x} and #{test_cell.y} owned by #{test_cell.owned}"
-test_cell.print
+board = GameBoard.new
